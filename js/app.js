@@ -199,9 +199,12 @@
 
     // Some phones (mostly iPhones) won't let a page start YouTube by itself —
     // if it didn't start, ask her to tap the record, which plays it directly.
-    function checkBlocked() {
+    function checkBlocked(tries = 0) {
       if (!want()) return;
-      const blocked = audio ? audio.paused : !player || !ready || player.getPlayerState() !== 1;
+      const state = player && ready ? player.getPlayerState() : -1;
+      // still loading (buffering, or the player isn't ready yet) — give it more time on slow data
+      if (!audio && (state === 3 || !ready) && tries < 4) { setTimeout(() => checkBlocked(tries + 1), 2000); return; }
+      const blocked = audio ? audio.paused : state !== 1;
       if (!blocked) return;
       if (audio) { audio.play().catch(() => {}); return; }
       box.classList.add("tap-to-play", "show-now");
