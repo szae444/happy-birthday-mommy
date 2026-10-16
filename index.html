@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#120d26">
+  <title>Mommy's Birthday Carnival</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Caveat:wght@500;700&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Pinyon+Script&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/booths.css">
+</head>
+<body>
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <canvas id="fx" aria-hidden="true"></canvas>
+
+  <!-- ============ BOOTH 1 · THE LOCKED GATE ============ -->
+  <section id="gate" class="screen is-active" aria-label="The locked gate">
+    <div class="gate-lights" aria-hidden="true"></div>
+    <header class="gate-head">
+      <p class="eyebrow">tonight only · admit one</p>
+      <h1 class="marquee-title">
+        <span class="t-script" data-name></span>
+        <span class="t-bulbs">BIRTHDAY</span>
+        <span class="t-serif">Carnival</span>
+      </h1>
+    </header>
+
+    <div class="gate-frame">
+      <div class="gate-arch" aria-hidden="true">
+        <span class="arch-word">ADMIT&nbsp;ONE</span>
+      </div>
+      <div class="gate-doors">
+        <div class="door door-l" aria-hidden="true"></div>
+        <div class="door door-r" aria-hidden="true"></div>
+        <div class="padlock" id="padlock">
+          <div class="shackle" aria-hidden="true"></div>
+          <div class="lock-body">
+            <div class="code-slots" id="codeSlots" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="gate-hint" id="gateHint"></p>
+    <div class="keypad" id="keypad" role="group" aria-label="Code keypad"></div>
+  </section>
+
+  <!-- ============ THE MAP ============ -->
+  <section id="map" class="screen" aria-label="Carnival map">
+    <div class="hud" id="hud">
+      <span class="hud-label">golden tickets</span>
+      <div class="hud-slots" id="hudSlots"></div>
+    </div>
+
+    <header class="map-head">
+      <svg class="ferris" id="ferris" viewBox="-110 -110 220 260" aria-hidden="true"></svg>
+      <div class="garland" id="garland" aria-hidden="true"></div>
+      <p class="eyebrow">welcome in, birthday girl</p>
+      <h1 class="marquee-title small">
+        <span class="t-script" data-name></span>
+        <span class="t-bulbs">BIRTHDAY</span>
+        <span class="t-serif">Carnival</span>
+      </h1>
+      <p class="map-lede">Visit every booth. Win a golden ticket at each one.<br>Collect all five and the <em>Big Tent</em> opens.</p>
+    </header>
+
+    <div class="midway" id="midway">
+      <svg class="path" id="pathSvg" aria-hidden="true"></svg>
+    </div>
+
+    <footer class="map-foot">made with all my love — <span data-from></span></footer>
+  </section>
+
+  <!-- ============ BOOTH OVERLAY ============ -->
+  <div class="booth" id="booth" role="dialog" aria-modal="true" aria-labelledby="boothTitle" hidden>
+    <div class="awning" aria-hidden="true"></div>
+    <header class="booth-head">
+      <button class="back" id="boothBack" type="button" aria-label="Back to the map">← map</button>
+      <div class="booth-titles">
+        <p class="booth-num" id="boothNum"></p>
+        <h2 id="boothTitle"></h2>
+        <p class="booth-sub" id="boothSub"></p>
+      </div>
+    </header>
+    <div class="booth-stage" id="boothStage"></div>
+    <footer class="booth-foot" id="boothFoot"></footer>
+  </div>
+
+  <!-- ============ GOLDEN TICKET ============ -->
+  <div class="ticket-pop" id="ticketPop" hidden>
+    <div class="gticket" id="gticket">
+      <div class="gt-left">
+        <span class="gt-admit">ADMIT ONE</span>
+        <span class="gt-name" data-name></span>
+        <span class="gt-booth" id="gtBooth"></span>
+      </div>
+      <div class="gt-right">
+        <span class="gt-no" id="gtNo"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="jukebox" id="jukebox">
+    <p class="jb-now" id="jbNow" aria-live="polite"></p>
+    <div class="jb-disc" aria-hidden="true"><div id="ytPlayer"></div></div>
+    <button class="jb-btn" id="soundBtn" type="button" aria-pressed="true" aria-label="Music and sound on"><span>♪</span></button>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/booths/stars.js"></script>
+  <script src="js/booths/arcade.js"></script>
+  <script src="js/booths/claw.js"></script>
+  <script src="js/booths/scratch.js"></script>
+  <script src="js/booths/wheel.js"></script>
+  <script src="js/booths/cake.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
